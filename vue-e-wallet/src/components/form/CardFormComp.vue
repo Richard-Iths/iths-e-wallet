@@ -25,7 +25,7 @@
       <div class="form-controller__row">
         <div class="form-controller__input">
           <label for="month">Month</label>
-          <input type="month" name="month" v-model="card.validMonth" disabled />
+          <input type="text" name="month" v-model="card.validMonth" disabled />
           <DropdownList
             :listItem="dropdownInfo.months"
             v-model:selectedItem="card.validMonth"
@@ -129,8 +129,7 @@ export default {
 
     &__input {
       display: flex;
-      flex-wrap: wrap;
-      flex: 0 1 25rem;
+      flex-direction: column;
       margin-bottom: 0.5rem;
       padding: 1rem 2rem;
       input {
@@ -139,6 +138,7 @@ export default {
         padding: 1.5rem;
         border-radius: 8px;
         outline: none;
+        max-width: 27rem;
         &:focus {
           background-color: #e6e3e3;
         }
@@ -154,5 +154,9 @@ export default {
       justify-content: center;
     }
   }
+}
+23 .btn {
+  padding: 2rem 0;
+  background-color: #e6e3e3;
 }
 </style>

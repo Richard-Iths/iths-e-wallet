@@ -41,8 +41,11 @@ export default {
     };
   },
   methods: {
-    showHideDropdown() {
+    showHideDropdown(e) {
       this.show = !this.show;
+      if (this.show) {
+        window.scrollTo({ top: e.clientY, behavior: "smooth" });
+      }
     },
     updateSelected(e) {
       let value = e.target.innerText;
@@ -54,6 +57,7 @@ export default {
       this.$emit("update:selectedItem", value);
       this.showHideDropdown();
     },
+    scrollTo() {},
   },
 };
 </script>
@@ -66,15 +70,15 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 4;
     overflow: hidden;
   }
   &__list {
     list-style-type: none;
     position: absolute;
     min-width: 25rem;
-    margin-top: 1.5rem;
     max-height: 20vh;
+    margin-top: 0.5rem;
     padding: 2rem 0;
     z-index: 99999;
     background-color: #fff;
@@ -101,11 +105,9 @@ export default {
   i {
     cursor: pointer;
     font-size: 2.5em;
-    position: relative;
     display: block;
-    margin-left: 550%;
+    margin-left: 22rem;
     margin-top: -4.5rem;
-    z-index: 3;
   }
 }
 </style>

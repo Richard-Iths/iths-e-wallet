@@ -7,15 +7,15 @@ createApp(App)
   .mixin({
     data() {
       return {
+        activeCard: {
+          id: Date.now().toString(),
+          holder: "The name",
+          vendor: "bitcoin",
+          number: "1234 1234 1234 1234",
+          validMonth: "12",
+          validDay: "5",
+        },
         cards: [
-          {
-            id: Date.now().toString(),
-            holder: "The name",
-            vendor: "bitcoin",
-            number: "1234 1234 1234 1234",
-            validMonth: "12",
-            validDay: "5",
-          },
           {
             id: Date.now().toString(),
             holder: "The name",

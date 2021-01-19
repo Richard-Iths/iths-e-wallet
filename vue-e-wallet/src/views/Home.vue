@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     getActiveCard() {
-      return this.$root.cards[0];
+      return this.$root.activeCard;
     },
   },
 };

@@ -5,6 +5,15 @@
 </template>
 
 <style lang="scss">
+$COLORS: (
+  primary: white,
+  secondary: #fff,
+);
+
+@function getColor($color) {
+  @return map-get($map: $COLORS, $key: $color);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +41,8 @@ body {
     color: #222;
     font-weight: bold;
     text-align: center;
-    background-color: white;
+    /* background-color: white; */
+    background-color: getColor("primary");
     flex: 0 1 30rem;
 
     &:hover {

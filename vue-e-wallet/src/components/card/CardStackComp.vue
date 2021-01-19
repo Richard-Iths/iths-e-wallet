@@ -5,6 +5,7 @@
       :key="item.id"
       :card="item"
       :class="getCards.length - 1 === index ? 'not-compressed' : 'compressed'"
+      @click="setActiveCard(item)"
     />
   </div>
 </template>
@@ -21,6 +22,11 @@ export default {
       return this.$root.cards;
     },
   },
+  methods: {
+    setActiveCard(card) {
+      this.$root.activeCard = card;
+    },
+  },
 };
 </script>
 
@@ -29,13 +35,13 @@ export default {
   margin-top: 2rem;
 
   .compressed {
-    height: 6rem;
+    max-height: 6rem;
     overflow: hidden;
     margin-top: -0.3rem;
     z-index: 1;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scaleY(1.1);
       transition: transform 0.2s ease;
       overflow: hidden;
     }

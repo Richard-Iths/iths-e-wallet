@@ -71,6 +71,7 @@ article {
   .card {
     display: grid;
     max-height: 22rem;
+    min-height: 22rem;
     min-width: 35rem;
     max-width: 35rem;
     margin: 0 auto;
@@ -84,6 +85,7 @@ article {
     border-radius: 6px;
     padding: 0 1rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-transform: capitalize;
 
     &__vendor--bitcoin {
       background: linear-gradient(60deg, #faa70c, 75%, #f3c266);
