@@ -1,15 +1,15 @@
 <template>
-  <section>
-    <CardStack :title="title" />
-  </section>
+  <main class="add-card">
+    <CardForm />
+  </main>
 </template>
 
 <script>
-import CardStackComp from "@/components/card/CardStackComp.vue";
+import CardFormComp from "@/components/form/CardFormComp.vue";
 export default {
   name: "AddCard",
   components: {
-    CardStack: CardStackComp,
+    CardForm: CardFormComp,
   },
   data() {
     return {
@@ -18,3 +18,5 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped></style>

@@ -5,7 +5,7 @@
         <h5>{{ titleToUpperCase }}</h5>
       </template>
     </CardTop>
-    <div :class="`card ${getCardVendorClass} ${isCompressed}`">
+    <div :class="`card ${getCardVendorClass}`">
       <div class="card__img-vendor">
         <img :src="getVendorImgUrl" alt="vendor-icon" />
       </div>
@@ -44,10 +44,6 @@ export default {
       type: Object,
       required: true,
     },
-    compressed: {
-      type: Boolean,
-      default: true,
-    },
   },
   computed: {
     titleToUpperCase() {
@@ -57,16 +53,15 @@ export default {
       return `card__vendor--${this.card.vendor}`;
     },
     getVendorImgUrl() {
-      return require(`@/assets/images/vendor-${this.card.vendor}.svg`);
+      return this.card.vendor !== ""
+        ? require(`@/assets/images/vendor-${this.card.vendor}.svg`)
+        : "";
     },
     getChipImgUrl() {
       return this.card.vendor === "evil" || this.card.vendor === "ninja"
         ? require("@/assets/images/chip-light.svg")
         : require("@/assets/images/chip-dark.svg");
     },
-  },
-  created() {
-    console.log(this.compressed);
   },
 };
 </script>
@@ -76,6 +71,7 @@ article {
   .card {
     display: grid;
     max-height: 22rem;
+    min-width: 35rem;
     max-width: 35rem;
     margin: 0 auto;
     grid-template-areas:
@@ -91,8 +87,6 @@ article {
 
     &__vendor--bitcoin {
       background: linear-gradient(60deg, #faa70c, 75%, #f3c266);
-      h2 {
-      }
     }
     &__vendor--ninja {
       background: linear-gradient(60deg, #272727, 75%, #222);

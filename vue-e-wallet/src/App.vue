@@ -21,5 +21,26 @@ body {
 }
 .wrapper {
   margin: 0 auto;
+
+  .btn {
+    margin-top: 2.5rem;
+    text-decoration: none;
+    border: 2px solid #222;
+    padding: 1.2rem;
+    border-radius: 10px;
+    min-width: 32rem;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+    background-color: white;
+    flex: 0 1 30rem;
+
+    &:hover {
+      background-color: #222;
+      transform: scale(1.1);
+      color: #fff;
+      transition: all ease 500ms;
+    }
+  }
 }
 </style>

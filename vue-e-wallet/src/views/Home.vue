@@ -3,6 +3,7 @@
     <h1 class="title">E-WALLET</h1>
     <Card :title="title" :card="getActiveCard" />
     <CardStack />
+    <router-link to="/add/card" class="btn">ADD NEW CARD</router-link>
   </main>
 </template>
 
@@ -31,6 +32,10 @@ export default {
 <style lang="scss" scoped>
 .home {
   margin-top: 5rem;
+  display: grid;
+  place-items: center;
+  margin: 2rem 0 5rem 0;
+  gap: 2rem;
   h1 {
     text-align: center;
     margin-bottom: 2rem;

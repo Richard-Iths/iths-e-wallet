@@ -35,7 +35,6 @@ export default {
     z-index: 1;
 
     &:hover {
-      z-index: 999;
       transform: scale(1.05);
       transition: transform 0.2s ease;
       overflow: hidden;
@@ -45,7 +44,6 @@ export default {
     height: 22rem;
     margin-top: -0.3rem;
     &:hover {
-      z-index: 999;
       transform: scale(1.05);
       transition: transform 0.2s ease;
       overflow: hidden;
