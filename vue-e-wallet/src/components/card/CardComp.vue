@@ -53,7 +53,7 @@ export default {
       return `card__vendor--${this.card.vendor}`;
     },
     getVendorImgUrl() {
-      return this.card.vendor !== ""
+      return this.card.vendor !== "" && this.card.vendor !== undefined
         ? require(`@/assets/images/vendor-${this.card.vendor}.svg`)
         : "";
     },
@@ -61,6 +61,9 @@ export default {
       return this.card.vendor === "evil" || this.card.vendor === "ninja"
         ? require("@/assets/images/chip-light.svg")
         : require("@/assets/images/chip-dark.svg");
+    },
+    isCardNotEmpty() {
+      return this.card.id !== undefined || "";
     },
   },
 };

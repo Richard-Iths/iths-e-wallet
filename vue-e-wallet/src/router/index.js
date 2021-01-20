@@ -13,6 +13,11 @@ const routes = [
     name: "AddCard",
     component: AddCard,
   },
+  {
+    path: "/edit/card",
+    name: "EditCard",
+    component: AddCard,
+  },
 ];
 
 const router = createRouter({

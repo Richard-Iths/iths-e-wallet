@@ -1,7 +1,11 @@
 <template>
   <main class="home">
     <h1 class="title">E-WALLET</h1>
-    <Card :title="title" :card="getActiveCard" />
+    <Card :title="title" :card="getActiveCard" v-if="isCardsEmpty" />
+    <div class="card-settings" v-if="isCardsEmpty">
+      <RemoveActiveCardBtn />
+      <EditActiveCardBtn />
+    </div>
     <CardStack />
     <router-link to="/add/card" class="btn">ADD NEW CARD</router-link>
   </main>
@@ -10,11 +14,15 @@
 <script>
 import CardComp from "@/components/card/CardComp.vue";
 import CardStackComp from "@/components/card/CardStackComp.vue";
+import BtnRemoveACtiveCardComp from "@/components/button/BtnRemoveActiveCardComp.vue";
+import BtnEditActiveCardComp from "@/components/button/BtnEditActiveCardComp.vue";
 export default {
   name: "Home",
   components: {
     Card: CardComp,
     CardStack: CardStackComp,
+    RemoveActiveCardBtn: BtnRemoveACtiveCardComp,
+    EditActiveCardBtn: BtnEditActiveCardComp,
   },
   data() {
     return {
@@ -24,6 +32,9 @@ export default {
   computed: {
     getActiveCard() {
       return this.$root.activeCard;
+    },
+    isCardsEmpty() {
+      return this.$root.cards.length !== 0 || this.$root.activeCard.id;
     },
   },
 };
@@ -43,7 +54,15 @@ export default {
 
   .title {
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: monospace;
+  }
+
+  .card-settings {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 18vw;
+    max-width: 18vw;
+    justify-content: space-evenly;
   }
 }
 </style>

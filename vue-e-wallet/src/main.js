@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
+import { v4 as uuidv4 } from "uuid";
 
 createApp(App)
   .use(router)
@@ -8,7 +9,7 @@ createApp(App)
     data() {
       return {
         activeCard: {
-          id: Date.now().toString(),
+          id: uuidv4(),
           holder: "The name",
           vendor: "bitcoin",
           number: "1234 1234 1234 1234",
@@ -17,7 +18,7 @@ createApp(App)
         },
         cards: [
           {
-            id: Date.now().toString(),
+            id: uuidv4(),
             holder: "The name",
             vendor: "evil",
             number: "1234 1234 1234 1234",
@@ -25,7 +26,7 @@ createApp(App)
             validDay: "5",
           },
           {
-            id: Date.now().toString(),
+            id: uuidv4(),
             holder: "The name",
             vendor: "ninja",
             number: "1234 1234 1234 1234",
@@ -33,7 +34,7 @@ createApp(App)
             validDay: "5",
           },
           {
-            id: Date.now().toString(),
+            id: uuidv4(),
             holder: "The name",
             vendor: "blockchain",
             number: "1234 1234 1234 1234",
@@ -41,7 +42,7 @@ createApp(App)
             validDay: "5",
           },
           {
-            id: Date.now().toString(),
+            id: uuidv4(),
             holder: "The name",
             vendor: "bitcoin",
             number: "1234 1234 1234 1234",

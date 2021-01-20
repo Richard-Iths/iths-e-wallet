@@ -23,8 +23,13 @@ export default {
     },
   },
   methods: {
-    setActiveCard(card) {
-      this.$root.activeCard = card;
+    setActiveCard(newActiveCard) {
+      const oldActiveCard = this.$root.activeCard;
+      this.$root.activeCard = newActiveCard;
+      this.$root.cards = this.$root.cards.filter(
+        (card) => card.id !== newActiveCard.id
+      );
+      this.$root.cards.push(oldActiveCard);
     },
   },
 };
@@ -44,6 +49,7 @@ export default {
       transform: scaleY(1.1);
       transition: transform 0.2s ease;
       overflow: hidden;
+      cursor: pointer;
     }
   }
   .not-compressed {
@@ -53,6 +59,7 @@ export default {
       transform: scale(1.05);
       transition: transform 0.2s ease;
       overflow: hidden;
+      cursor: pointer;
     }
   }
 }

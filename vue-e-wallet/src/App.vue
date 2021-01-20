@@ -41,9 +41,8 @@ body {
     color: #222;
     font-weight: bold;
     text-align: center;
-    /* background-color: white; */
     background-color: getColor("primary");
-    flex: 0 1 30rem;
+    text-transform: uppercase;
 
     &:hover {
       background-color: #222;

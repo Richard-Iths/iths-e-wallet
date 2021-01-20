@@ -1,6 +1,7 @@
 <template>
   <section class="card-form">
-    <Card :card="card" />
+    <h2>Add New Card</h2>
+    <Card :title="title" :card="card" />
     <form class="form-controller" @submit.prevent="">
       <div class="form-controller__input">
         <label for="card-number">card number</label>
@@ -50,7 +51,9 @@
         />
       </div>
 
-      <button type="submit" class="btn" @click="addCard">ADD CARD</button>
+      <button type="submit" class="btn" @click="addCard">
+        {{ checkState }}
+      </button>
     </form>
   </section>
 </template>
@@ -58,11 +61,22 @@
 <script>
 import CardComp from "@/components/card/CardComp.vue";
 import DropdownListComp from "@/components/dropdown-list/DropdownListComp.vue";
+import { v4 as uuidv4 } from "uuid";
 export default {
   name: "CardFormComp",
+  props: {
+    title: {
+      type: String,
+    },
+  },
   components: {
     Card: CardComp,
     DropdownList: DropdownListComp,
+  },
+  computed: {
+    checkState() {
+      return this.state === "add" ? "ADD CARD" : "EDIT CARD";
+    },
   },
   data() {
     return {
@@ -91,6 +105,7 @@ export default {
         years: ["2021", "2022", "2023", "2024", "2025"],
         vendors: ["bitcoin inc", "blockchain inc", "evil corp", "ninja bank"],
       },
+      state: "add",
     };
   },
   methods: {
@@ -107,9 +122,25 @@ export default {
       console.log(payload);
     },
     addCard() {
-      this.$root.cards.push({ ...this.card });
-      this.$router.push({ path: "/" });
+      if (this.state === "add") {
+        this.card.id = uuidv4();
+        if (!this.$root.activeCard.id) {
+          this.$root.activeCard = this.card;
+          return this.$router.push({ path: "/" });
+        }
+        this.$root.cards.push({ ...this.card });
+        this.$router.push({ path: "/" });
+      } else {
+        this.$root.activeCard = { ...this.card };
+        this.$router.push({ path: "/" });
+      }
     },
+  },
+  created() {
+    if (this.$router.currentRoute._value.path === "/edit/card") {
+      this.card = this.$root.activeCard;
+      this.state = "edit";
+    }
   },
 };
 </script>
@@ -124,8 +155,7 @@ export default {
     margin-top: 1.5rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 60rem;
+    max-width: 62rem;
 
     &__input {
       display: flex;
@@ -139,6 +169,7 @@ export default {
         border-radius: 8px;
         outline: none;
         max-width: 27rem;
+        min-width: 27rem;
         &:focus {
           background-color: #e6e3e3;
         }
@@ -151,12 +182,12 @@ export default {
     &__row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
     }
   }
 }
-23 .btn {
+.btn {
   padding: 2rem 0;
   background-color: #e6e3e3;
+  margin: 2rem auto;
 }
 </style>

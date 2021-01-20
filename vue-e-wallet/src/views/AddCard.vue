@@ -1,6 +1,6 @@
 <template>
   <main class="add-card">
-    <CardForm />
+    <CardForm title="New Card" />
   </main>
 </template>
 
