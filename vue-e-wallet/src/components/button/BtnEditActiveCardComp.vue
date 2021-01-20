@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     edit() {
-      this.$router.push({ path: "/edit/card" });
+      this.$router.push({ path: "/add/card", query: { edit: true } });
     },
   },
 };

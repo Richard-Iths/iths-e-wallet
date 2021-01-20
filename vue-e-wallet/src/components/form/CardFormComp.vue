@@ -137,9 +137,9 @@ export default {
     },
   },
   created() {
-    if (this.$router.currentRoute._value.path === "/edit/card") {
-      this.card = this.$root.activeCard;
+    if (this.$route.query.edit) {
       this.state = "edit";
+      this.card = this.$root.activeCard;
     }
   },
 };

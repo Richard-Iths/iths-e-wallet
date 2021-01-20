@@ -9,13 +9,8 @@ const routes = [
     component: Home,
   },
   {
-    path: "/add/card",
+    path: "/add/card/",
     name: "AddCard",
-    component: AddCard,
-  },
-  {
-    path: "/edit/card",
-    name: "EditCard",
     component: AddCard,
   },
 ];
