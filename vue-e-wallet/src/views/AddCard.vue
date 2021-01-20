@@ -1,5 +1,6 @@
 <template>
   <main class="add-card">
+    <h2>Add New Card</h2>
     <CardForm title="New Card" />
   </main>
 </template>
@@ -19,4 +20,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.add-card {
+  padding: 5rem 0;
+  h2 {
+    text-align: center;
+  }
+}
+</style>

@@ -1,6 +1,5 @@
 <template>
   <section class="card-form">
-    <h2>Add New Card</h2>
     <Card :title="title" :card="card" />
     <form class="form-controller" @submit.prevent="">
       <div class="form-controller__input">
@@ -34,20 +33,32 @@
         </div>
         <div class="form-controller__input">
           <label for="year">Year</label>
-          <input type="text" name="year" v-model="card.validDay" disabled />
+          <input
+            type="text"
+            name="year"
+            id="year"
+            v-model="card.validDay"
+            disabled
+          />
           <DropdownList
             :listItem="dropdownInfo.years"
-            v-model:selectedItem.splitReturnTwoLast="card.validDay"
+            v-model:selectedItem="card.validDay"
           />
         </div>
       </div>
       <div class="form-controller__input">
         <label for="vendor">Vendor</label>
-        <input type="text" name="vendor" v-model="card.vendor" disabled />
+        <input
+          type="text"
+          name="vendor"
+          id="vendor"
+          v-model="card.vendor"
+          disabled
+        />
 
         <DropdownList
           :listItem="dropdownInfo.vendors"
-          v-model:selectedItem.splitReturnFirst="card.vendor"
+          v-model:selectedItem="card.vendor"
         />
       </div>
 

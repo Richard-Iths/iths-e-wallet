@@ -22,7 +22,7 @@
         </div>
         <div class="card__holder__valid">
           <h6>VALID UNTIL</h6>
-          <h4>{{ card.validMonth }} / {{ card.validDay }}</h4>
+          <h4>{{ card.validMonth }} / {{ printYearFilter }}</h4>
         </div>
       </div>
     </div>
@@ -50,20 +50,25 @@ export default {
       return this.title.toUpperCase();
     },
     getCardVendorClass() {
-      return `card__vendor--${this.card.vendor}`;
+      return `card__vendor--${this.card.vendor.split(" ")[0].toLowerCase()}`;
     },
     getVendorImgUrl() {
       return this.card.vendor !== "" && this.card.vendor !== undefined
-        ? require(`@/assets/images/vendor-${this.card.vendor}.svg`)
+        ? require(`@/assets/images/vendor-${this.card.vendor
+            .split(" ")[0]
+            .toLowerCase()}.svg`)
         : "";
     },
     getChipImgUrl() {
-      return this.card.vendor === "evil" || this.card.vendor === "ninja"
+      return this.card.vendor.split(" ")[0].toLowerCase() === "evil" ||
+        this.card.vendor.split(" ")[0].toLowerCase() === "ninja"
         ? require("@/assets/images/chip-light.svg")
         : require("@/assets/images/chip-dark.svg");
     },
-    isCardNotEmpty() {
-      return this.card.id !== undefined || "";
+    printYearFilter() {
+      return this.card.validDay !== undefined
+        ? this.card.validDay.slice(2, 4)
+        : "";
     },
   },
 };
@@ -87,9 +92,9 @@ article {
     grid-template-rows: 0.5fr 1.2fr 0.6fr 1.2fr;
     border-radius: 6px;
     padding: 0 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+    background-color: #d4d2d2;
     text-transform: capitalize;
-
     &__vendor--bitcoin {
       background: linear-gradient(60deg, #faa70c, 75%, #f3c266);
     }

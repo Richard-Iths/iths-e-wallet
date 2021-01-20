@@ -10,8 +10,9 @@
         {{ item }}
       </li>
     </ul>
-
-    <div class="dropdown__modal" v-if="show" @click="showHideDropdown"></div>
+    <teleport to="body">
+      <div class="dropdown__modal" v-if="show" @click="showHideDropdown"></div>
+    </teleport>
   </div>
 </template>
 
@@ -30,9 +31,6 @@ export default {
       type: String,
       required: true,
     },
-    selectedItemModifiers: {
-      default: () => ({}),
-    },
   },
   emits: ["update:selectedItem"],
   data() {
@@ -49,11 +47,6 @@ export default {
     },
     updateSelected(e) {
       let value = e.target.innerText;
-      if (this.selectedItemModifiers.splitReturnFirst) {
-        value = value.split(" ")[0].toLowerCase();
-      } else if (this.selectedItemModifiers.splitReturnTwoLast) {
-        value = value.slice(2, value.length);
-      }
       this.$emit("update:selectedItem", value);
       this.showHideDropdown();
     },
@@ -65,13 +58,11 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   &__modal {
-    min-height: 100vh;
-    min-width: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 4;
-    overflow: hidden;
+    right: 0;
+    bottom: 0;
   }
   &__list {
     list-style-type: none;
