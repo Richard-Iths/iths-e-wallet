@@ -3,8 +3,12 @@
     <h1 class="title">E-WALLET</h1>
     <Card :title="title" :card="getActiveCard" v-if="isCardsEmpty" />
     <div class="card-settings" v-if="isCardsEmpty">
-      <RemoveActiveCardBtn />
-      <EditActiveCardBtn />
+      <div class="btn-container">
+        <RemoveActiveCardBtn />
+      </div>
+      <div class="btn-container">
+        <EditActiveCardBtn />
+      </div>
     </div>
     <CardStack />
     <router-link to="/add/card" class="btn">ADD NEW CARD</router-link>
@@ -61,8 +65,11 @@ export default {
     display: flex;
     flex-wrap: wrap;
     min-width: 18vw;
-    max-width: 18vw;
     justify-content: space-evenly;
+
+    .btn-container {
+      padding: 0 1rem;
+    }
   }
 }
 </style>
