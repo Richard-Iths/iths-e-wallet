@@ -129,9 +129,6 @@ export default {
         this.card.number += " ";
       }
     },
-    selectedItem(payload) {
-      console.log(payload);
-    },
     addCard() {
       if (this.state === "add") {
         this.card.id = uuidv4();
@@ -158,7 +155,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-form {
-  margin: 5rem 0;
+  margin: 2rem 0;
   display: grid;
   place-items: center;
 
@@ -167,7 +164,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     max-width: 62rem;
-
+    justify-content: center;
     &__input {
       display: flex;
       flex-direction: column;
@@ -193,12 +190,13 @@ export default {
     &__row {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
     }
   }
 }
 .btn {
   padding: 2rem 0;
   background-color: #e6e3e3;
-  margin: 2rem auto;
+  margin: 2rem auto 0 auto;
 }
 </style>

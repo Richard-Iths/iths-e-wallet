@@ -1,6 +1,8 @@
 <template>
   <div class="dropdown">
-    <i class="material-icons" @click="showHideDropdown">arrow_drop_down</i>
+    <i class="material-icons" @click="showHideDropdown">{{
+      setDropdownArrow
+    }}</i>
     <ul class="dropdown__list" v-if="show">
       <li
         v-for="(item, index) in listItem"
@@ -30,6 +32,11 @@ export default {
     selectedItem: {
       type: String,
       required: true,
+    },
+  },
+  computed: {
+    setDropdownArrow() {
+      return this.show ? "arrow_drop_up" : "arrow_drop_down";
     },
   },
   emits: ["update:selectedItem"],
