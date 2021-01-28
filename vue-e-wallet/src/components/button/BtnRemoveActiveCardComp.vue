@@ -21,7 +21,7 @@ export default {
         this.$root.cards = this.$root.cards.filter(
           (card) => card.id !== lastAddedCard.id
         );
-        this.$root.activeCard = { ...lastAddedCard };
+        this.$root.activeCard = lastAddedCard;
       } else {
         this.$root.activeCard = {};
       }
